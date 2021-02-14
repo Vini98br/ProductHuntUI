@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Change tabs 1`] = `
+<div
+  className="sc-bdfBwQ cpBwlf"
+>
+  <div
+    className="sc-gsTCUz beNedl"
+    id="popular-tab"
+    onClick={[Function]}
+  >
+    Popular
+  </div>
+  <div
+    className="sc-gsTCUz cIjvaz"
+    id="newest-tab"
+    onClick={[Function]}
+  >
+    Newest
+  </div>
+</div>
+`;
+
+exports[`Change tabs 2`] = `
+<div
+  className="sc-bdfBwQ cpBwlf"
+>
+  <div
+    className="sc-gsTCUz cIjvaz"
+    id="popular-tab"
+    onClick={[Function]}
+  >
+    Popular
+  </div>
+  <div
+    className="sc-gsTCUz beNedl"
+    id="newest-tab"
+    onClick={[Function]}
+  >
+    Newest
+  </div>
+</div>
+`;
