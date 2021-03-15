@@ -13,12 +13,12 @@ import {
 
 export interface PostsListProps {
   posts: PostType[];
-  storageData: (product: PostType) => void;
+  storageData?: (product: PostType) => void;
 }
 
 const PostsList: React.FC<PostsListProps> = ({
   posts,
-  storageData
+  storageData = () => ({})
 }) => {
 
   return (

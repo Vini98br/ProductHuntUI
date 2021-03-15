@@ -12,6 +12,7 @@ test("Render Tabs", async () => {
         tabs={[
           { label: "Popular", value: "popular" },
           { label: "Newest", value: "newest" },
+          { label: "Favorites", value: "favorites" },
         ]}
       />
     </ThemeProvider>
@@ -33,6 +34,7 @@ test("Change tabs", async () => {
           tabs={[
             { label: "Popular", value: "popular" },
             { label: "Newest", value: "newest" },
+            { label: "Favorites", value: "favorites" },
           ]}
         />
       </ThemeProvider>
@@ -50,6 +52,7 @@ test("Change tabs", async () => {
           tabs={[
             { label: "Popular", value: "popular" },
             { label: "Newest", value: "newest" },
+            { label: "Favorites", value: "favorites" },
           ]}
         />
       </ThemeProvider>

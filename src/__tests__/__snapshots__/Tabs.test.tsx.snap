@@ -18,6 +18,13 @@ exports[`Change tabs 1`] = `
   >
     Newest
   </div>
+  <div
+    className="sc-gsTCUz cIjvaz"
+    id="favorites-tab"
+    onClick={[Function]}
+  >
+    Favorites
+  </div>
 </div>
 `;
 
@@ -38,6 +45,13 @@ exports[`Change tabs 2`] = `
     onClick={[Function]}
   >
     Newest
+  </div>
+  <div
+    className="sc-gsTCUz cIjvaz"
+    id="favorites-tab"
+    onClick={[Function]}
+  >
+    Favorites
   </div>
 </div>
 `;

@@ -26,7 +26,7 @@ import Loading from "react-loading";
 import { theme } from "../../theme";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
-function parseData(data: Post[], favoriteValue: Post[]) {
+function parsePostsData(data: Post[], favoriteValue: Post[]) {
   return data?.map((obj) => {
     if (favoriteValue?.some((item) => item.id === obj.id)) {
       return { ...obj, fav: true };
@@ -63,7 +63,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const formatted = responseData?.posts.edges.map((obj) => obj.node);
-    setData(parseData(formatted!, JSON.parse(favoriteValue)));
+    setData(parsePostsData(formatted!, JSON.parse(favoriteValue)));
     setPageInfo(responseData?.posts.pageInfo!);
   }, [favoriteValue, responseData]);
 
@@ -79,10 +79,9 @@ const Home: React.FC = () => {
           });
           setPageInfo(moreData?.posts.pageInfo!);
           const moreFormatted = moreData?.posts.edges.map((obj) => obj.node);
-          console.log(moreFormatted);
           setData((prev) => [
             ...prev!,
-            ...parseData(moreFormatted!, JSON.parse(favoriteValue)),
+            ...parsePostsData(moreFormatted!, JSON.parse(favoriteValue)),
           ]);
         }
       }
@@ -139,14 +138,19 @@ const Home: React.FC = () => {
         setFilteredData(null);
       } else {
         setFilteredData([
-          ...(data as Post[]).filter((obj) => obj.name.startsWith(value))!,
+          ...(data as Post[]).filter((obj) =>
+            obj.name.toLowerCase().startsWith(value.toLowerCase())
+          )!,
         ]);
       }
     },
     [data]
   );
 
-  const isEmpty = () => data?.length === 0 || error || (activeTab === "favorites" && JSON.parse(favoriteValue!).length === 0);
+  const isEmpty = () =>
+    data?.length === 0 ||
+    error ||
+    (activeTab === "favorites" && JSON.parse(favoriteValue!).length === 0);
   return (
     <Container>
       <Header>
