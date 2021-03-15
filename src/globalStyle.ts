@@ -25,11 +25,21 @@ export const GlobalStyle = createGlobalStyle`
     width: 6px!important;
     height: 6px!important;
   }
+  
   ::-webkit-scrollbar-thumb {
       background-color: rgba(0,0,0,.2);
   }
+
   ::-webkit-scrollbar-track {
       background: hsla(0,0%,100%,.1);
   }
 
+  &.ant-input:hover {
+    border-color: ${(props) => props.theme.colors.primary};
+  }
+
+  &.ant-input:focus {
+    border-color: ${(props) => props.theme.colors.primary};
+    box-shadow: 0 0 0 2px #d9552e42 !important;
+  }
 `;

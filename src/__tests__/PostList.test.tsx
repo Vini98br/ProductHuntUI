@@ -19,6 +19,7 @@ const mockedPosts = [
     url:
       "https://www.producthunt.com/posts/community-fund?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+ps_arena3+%28ID%3A+42116%29",
     votesCount: 263,
+    fav: false
   },
   {
     createdAt: "2021-02-13T09:11:47Z",
@@ -34,7 +35,8 @@ const mockedPosts = [
     url:
       "https://www.producthunt.com/posts/community-fund?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+ps_arena3+%28ID%3A+42116%29",
     votesCount: 263,
-  }
+    fav: true
+  },
 ];
 
 test("Render Posts List", async () => {

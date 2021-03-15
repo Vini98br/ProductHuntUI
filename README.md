@@ -3,17 +3,11 @@
 
 Inspired on [this](https://dribbble.com/shots/5650328/attachments/5650328-ProductHunt-Mobile-App-Redesign-Day-338-365-Project365?mode=media) design.
 
-## ✅ Features
-
-- [x] Tab displaying most popular product hunt posts
-- [x] Tab displaying most recent product hunt posts
-- [x] Infinity scroll
-- [x] Date Picker
-
 ## 🔧 Configuring environment
 
 - Copy the `.env-example` file and create a new file named as `.env`.
 - Follow [these](https://api.producthunt.com/v2/docs) instructions to get your `token`.
+- Or simply access [here](https://www.producthunt.com/v2/oauth/applications), create an application and create your developer token.
 - Paste your `token` on `.env` file:
   ```
   REACT_APP_API_TOKEN=your-token-here

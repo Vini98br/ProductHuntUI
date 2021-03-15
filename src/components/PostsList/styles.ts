@@ -2,10 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div``;
 
-export const List = styled.div`
+export const List = styled.div<{ length: number }>`
   padding: 0 15px;
-  height: calc(100% - 140px);
-  overflow-y: auto;
+  height: ${props => props?.length < 15 ? '100%' : 'calc(100% - 140px)'};
 `;
 
 export const Post = styled.div`
@@ -54,24 +53,15 @@ export const Description = styled.div`
   }
 `;
 
-export const Votes = styled.div`
-  height: 35px;
-  width: 35px;
+export const Fav = styled.div`
   margin: auto;
-  border-radius: 5px;
   position: absolute;
-  right: -10px;
+  right: 10px;
   bottom: 0;
   top: 0;
   border-radius: 10px;
-  border: 1px solid ${(props) => props.theme.colors.gray};
-  background-color: ${(props) => props.theme.colors.secondary};
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 0 5px;
-  font-size: 12px;
-  font-weight: 600;
   cursor: pointer;
 `;

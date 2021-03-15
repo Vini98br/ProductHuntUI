@@ -8,4 +8,5 @@ export type Post = {
   thumbnail: {
     url: string;
   };
+  fav: boolean;
 };

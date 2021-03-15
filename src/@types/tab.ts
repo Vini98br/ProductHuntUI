@@ -1,1 +1,1 @@
-export type TabEnum = "popular" | "newest";
+export type TabEnum = "popular" | "newest" | "favorites";

@@ -3,8 +3,15 @@ import { BsInbox } from "react-icons/bs";
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 800px;
   background-color: ${(props) => props.theme.colors.light_gray};
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  overflow-y: auto;
 `;
 
 export const LoadingWrapper = styled.div`
@@ -41,6 +48,7 @@ export const Header = styled.header`
   display: flex;
   height: auto;
   flex-direction: column;
+  width: 100%;
   background-color: ${(props) => props.theme.colors.secondary};
   box-shadow: 0 4px 8px -6px rgba(0, 0, 0, 0.6);
 `;
@@ -52,6 +60,12 @@ export const Menu = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  @media(max-width: 478px) {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 200px;
+
+  }
   svg {
     color: ${(props) => props.theme.colors.gray};
   }
@@ -71,4 +85,12 @@ export const Filter = styled.div`
   text-align: center;
   width: 100px;
   padding: 5px;
+`;
+
+export const SearchWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: 10px;
+  }
 `;

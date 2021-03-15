@@ -1,5 +1,5 @@
 import React from "react";
-import { IoMdArrowDropup } from "react-icons/io";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { Post as PostType } from "../../@types/post";
 import {
   Post,
@@ -7,18 +7,22 @@ import {
   InfoWrapper,
   Title,
   Description,
-  Votes,
+  Fav,
   Logo,
 } from "./styles";
 
 export interface PostsListProps {
   posts: PostType[];
-  onScroll?: (ev: React.UIEvent<HTMLDivElement, UIEvent>) => void;
+  storageData: (product: PostType) => void;
 }
 
-const PostsList: React.FC<PostsListProps> = ({ posts, onScroll = () => ({}) }) => {
+const PostsList: React.FC<PostsListProps> = ({
+  posts,
+  storageData
+}) => {
+
   return (
-    <List onScroll={onScroll}>
+    <List length={posts?.length}>
       {posts &&
         posts.map((project) => (
           <Post key={project.id}>
@@ -31,10 +35,13 @@ const PostsList: React.FC<PostsListProps> = ({ posts, onScroll = () => ({}) }) =
                   : project.description}
               </Description>
             </InfoWrapper>
-            <Votes>
-              <IoMdArrowDropup size={17} />
-              {project.votesCount}
-            </Votes>
+            <Fav onClick={() => storageData(project)}>
+              {project.fav ? (
+                <AiFillHeart size={30} />
+              ) : (
+                <AiOutlineHeart size={30} />
+              )}
+            </Fav>
           </Post>
         ))}
     </List>
