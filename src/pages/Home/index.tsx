@@ -46,7 +46,7 @@ const Home: React.FC = () => {
     ResponseType<Post, "posts">["posts"]["pageInfo"]
   >();
   const [loadMore, setLoadMore] = useState(false);
-  const [favoriteValue, setFavoriteValue] = useLocalStorage("favorites");
+  const [favoriteValue, setFavoriteValue] = useLocalStorage("favorites", []);
 
   const { loading, data: responseData, error, fetchMore } = useQuery<
     ResponseType<Post, "posts">
@@ -63,7 +63,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const formatted = responseData?.posts.edges.map((obj) => obj.node);
-    setData(parsePostsData(formatted!, JSON.parse(favoriteValue)));
+    setData(parsePostsData(formatted!, favoriteValue));
     setPageInfo(responseData?.posts.pageInfo!);
   }, [favoriteValue, responseData]);
 
@@ -81,7 +81,7 @@ const Home: React.FC = () => {
           const moreFormatted = moreData?.posts.edges.map((obj) => obj.node);
           setData((prev) => [
             ...prev!,
-            ...parsePostsData(moreFormatted!, JSON.parse(favoriteValue)),
+            ...parsePostsData(moreFormatted!, favoriteValue),
           ]);
         }
       }
@@ -100,12 +100,10 @@ const Home: React.FC = () => {
   };
 
   const storageData = (product: Post) => {
-    let storagedData = JSON.parse(favoriteValue!) as Post[];
+    let storagedData = favoriteValue as Post[];
     if (product.fav) {
       favItem(product, false);
-      setFavoriteValue(
-        JSON.stringify(storagedData.filter((obj) => obj.id !== product.id))
-      );
+      setFavoriteValue(storagedData.filter((obj) => obj.id !== product.id));
     } else {
       let arr: Post[] = [];
       if (!storagedData) {
@@ -114,7 +112,7 @@ const Home: React.FC = () => {
         if (!storagedData.some((obj) => obj.id === product.id))
           storagedData.push({ ...product, fav: true });
       }
-      setFavoriteValue(JSON.stringify(storagedData || arr));
+      setFavoriteValue(storagedData || arr);
       favItem(product, true);
     }
   };
@@ -147,15 +145,18 @@ const Home: React.FC = () => {
     [data]
   );
 
-  const isEmpty = () =>
-    data?.length === 0 ||
-    error ||
-    (activeTab === "favorites" && JSON.parse(favoriteValue!).length === 0);
+  const isEmpty = () => {
+    if(activeTab === "favorites" && favoriteValue.length === 0) return true;
+    return (
+      data?.length === 0 ||
+      error
+    );
+  };
   return (
     <Container>
       <Header>
         <Menu>
-          <Avatar src="https://media-exp1.licdn.com/dms/image/C5603AQF614xgYhWjow/profile-displayphoto-shrink_200_200/0/1517670369384?e=1621468800&v=beta&t=YAH5DW5HEUu5vdY4GhVmqukRYsH59At1NQEHpj5ppuo" />
+          <Avatar src="https://media-exp1.licdn.com/dms/image/C4D03AQHhVRUrg0-HOA/profile-displayphoto-shrink_200_200/0/1616630141036?e=1622678400&v=beta&t=dq4epFH4tJLs-cnd4zUUOO2CHp7Xq5NsrwalWyhAV7k" />
           <DatePicker
             selectedDate={selectedDate!}
             focused={focused}
@@ -195,7 +196,7 @@ const Home: React.FC = () => {
           <PostsList
             posts={
               activeTab === "favorites"
-                ? JSON.parse(favoriteValue!)
+                ? favoriteValue || []
                 : filteredData || data!
             }
             storageData={storageData}

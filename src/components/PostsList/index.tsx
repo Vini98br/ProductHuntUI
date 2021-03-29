@@ -25,7 +25,7 @@ const PostsList: React.FC<PostsListProps> = ({
     <List length={posts?.length}>
       {posts &&
         posts.map((project) => (
-          <Post key={project.id}>
+          <Post key={`${project.id}-${new Date().getTime()}`}>
             <Logo src={project.thumbnail.url} />
             <InfoWrapper>
               <Title>{project.name}</Title>
