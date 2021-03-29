@@ -4,7 +4,7 @@ Inspired on [this](https://dribbble.com/shots/5650328/attachments/5650328-Produc
 
 demo: https://product-hunt-ui.netlify.app/
 
-## Description
+## 💬 Description
 
 This project is for study purposes and consists in fetch and showing the trend and newest daily products on Product Hunt's API.
 
